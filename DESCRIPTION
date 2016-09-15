@@ -8,6 +8,7 @@ Maintainer: Christoph Walsh <walshcb@bu.edu>
 Depends:
     R (>= 2.15.0)
 Imports:
+    deldir,
     ggplot2,
     maptools,
     rgeos,
