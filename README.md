@@ -1,4 +1,4 @@
-# latlong2region
+# polygonNeighbors
 An `R` package to find which regions each region in a shapefile is adjacent to. Outputs a `data.frame` and (optionally) the adjacency matrix and a plot of the adjacencies.
 
 <div align="center">
