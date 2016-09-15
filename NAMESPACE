@@ -1,4 +1,5 @@
 import(ggplot2)
 import(maptools)
 import(rgeos)
+import(viridis)
 export(polygonNeighbors)

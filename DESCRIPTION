@@ -13,6 +13,7 @@ Imports:
     maptools,
     rgeos,
     sp,
-    spdep
+    spdep,
+    viridis
 License: GPL-3
 URL: https://github.com/walshc/polygonNeighbors

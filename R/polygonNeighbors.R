@@ -19,22 +19,34 @@ polygonNeighbors <- function(shp, id = NULL, nb.matrix = FALSE, plot = FALSE) {
     shp.df <- fortify(shp, region = id)
     tmp <- data.frame(id = shp@data[[id]], nb = colSums(adj))
     shp.df <- plyr::join(shp.df, tmp)
-    # Labels for number of adjacencies:
-    lab.df <- data.frame(coordinates(shp))
-    names(lab.df) <- c("long", "lat")
-    lab.df$nb <- colSums(adj)
-    lab.df$group <- NA
-    g <- ggplot(shp.df, aes(long, lat, group = group)) +
-      geom_path() +
-      geom_polygon(aes(fill = factor(nb))) +
-      geom_text(data = lab.df, aes(x = long, y = lat, label = nb),
-                color = "darkgreen") +
-      scale_fill_discrete(name = "Number of\nadjacencies") +
-      coord_equal() +
-      theme(axis.ticks = element_blank(),
-            axis.text = element_blank(),
-            axis.title = element_blank(),
-            panel.background = element_blank())
+    if (length(unique(shp.df$nb)) <= 8) {
+      # Labels for number of adjacencies:
+      lab.df <- data.frame(coordinates(shp))
+      names(lab.df) <- c("long", "lat")
+      lab.df$nb <- colSums(adj)
+      lab.df$group <- NA
+      g <- ggplot(shp.df, aes(long, lat, group = group)) +
+        geom_path() +
+        geom_polygon(aes(fill = factor(nb))) +
+        geom_text(data = lab.df, aes(x = long, y = lat, label = nb),
+                  color = "darkgreen") +
+        scale_fill_discrete(name = "Number of\nadjacencies") +
+        coord_equal() +
+        theme(axis.ticks = element_blank(),
+              axis.text = element_blank(),
+              axis.title = element_blank(),
+              panel.background = element_blank())
+    } else {
+      g <- ggplot(shp.df, aes(long, lat, group = group)) +
+        geom_path() +
+        geom_polygon(aes(fill = nb)) +
+        scale_fill_viridis(name = "Number of\nadjacencies") +
+        coord_equal() +
+        theme(axis.ticks = element_blank(),
+              axis.text = element_blank(),
+              axis.title = element_blank(),
+              panel.background = element_blank())
+    }
   }
 
   adj <- apply(adj, 2, as.logical)
@@ -63,4 +75,3 @@ polygonNeighbors <- function(shp, id = NULL, nb.matrix = FALSE, plot = FALSE) {
   }
   return(out)
 }
-
