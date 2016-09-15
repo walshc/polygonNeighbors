@@ -2,7 +2,7 @@
 An `R` package to find which regions each region in a shapefile is adjacent to. Outputs a `data.frame` and (optionally) the adjacency matrix and a plot of the adjacencies.
 
 <div align="center">
-<img src="https://github.com/walshc/polygonNeighbors/blob/master/example.png?raw=true" width="500">
+<img src="https://github.com/walshc/polygonNeighbors/blob/master/example.png?raw=true" width="700">
 </div>
 
 ## Installation
@@ -31,9 +31,9 @@ You can also get the adjacency matrix and/or plot of adjacencies with:
 state.adj <- polygonNeighbors(shp, id = "NAME", nb.matrix = TRUE, plot = TRUE)
 ```
 
-### Output
+## Output
 
-## Adjacency data.frame
+### Adjacency data.frame
 ```
 > head(state.adj$nb)
         NAME      adj.1     adj.2          adj.3      adj.4          adj.5         adj.6   adj.7 adj.8
@@ -44,7 +44,7 @@ state.adj <- polygonNeighbors(shp, id = "NAME", nb.matrix = TRUE, plot = TRUE)
 5  Wisconsin   Michigan Minnesota       Illinois       Iowa           <NA>          <NA>    <NA>  <NA>
 6     Oregon California     Idaho     Washington     Nevada           <NA>          <NA>    <NA>  <NA>
 ```
-## Adjacency matrix
+### Adjacency matrix
 ```
 > state.adj$nb.matrix[1:6, 1:6]
            Texas California Kentucky Georgia Wisconsin Oregon
