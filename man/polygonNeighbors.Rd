@@ -25,7 +25,7 @@ download.file(file, "states.zip")
 unzip("states.zip")
 shp <- rgdal::readOGR(".", "cb_2015_us_state_20m")
 shp <- shp[!(shp@data$STATEFP \%in\% c("02", "15", "72")),]  # Contiguous US
-shp <- sp::spTransform(shp, CRS("+init=epsg:26978"))
+shp <- sp::spTransform(shp, sp::CRS("+init=epsg:26978"))
 state.adj <- polygonNeighbors(shp, id = "NAME", nb.matrix = TRUE, plot = TRUE)
 }
 

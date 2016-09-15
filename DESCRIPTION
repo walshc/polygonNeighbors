@@ -8,7 +8,6 @@ Maintainer: Christoph Walsh <walshcb@bu.edu>
 Depends:
     R (>= 2.15.0)
 Imports:
-    coda,
     deldir,
     ggplot2,
     maptools,
